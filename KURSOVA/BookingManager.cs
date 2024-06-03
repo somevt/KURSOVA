@@ -55,7 +55,7 @@ namespace KURSOVA
 
         public List<Ticket> GetTicketsByPassenger(string name, string surname)
         {
-            string fullName = $"{name} {surname}".ToLower();
+            
             List<Ticket> tic = Tickets.Where(t => t.PassengerName == name).ToList();
             return tic.Where(t => t.PassengerSurname == surname).ToList();
         }

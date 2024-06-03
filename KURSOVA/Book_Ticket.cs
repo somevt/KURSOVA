@@ -26,9 +26,10 @@ namespace KURSOVA
             try
             {
                 string passengerName = txtPassengerName.Text;
+                string passengerSurname = txtPassengerSurname.Text;
                 string flightNumber = txtFlightNumber.Text;
 
-                var ticket = booking.BookOneWayTicket(passengerName, passengerName, flightNumber );
+                var ticket = booking.BookOneWayTicket(passengerName, passengerSurname, flightNumber );
                 MessageBox.Show("Ticket booked successfully. Ticket ID: " + ticket.TicketID);
             }
             catch (Exception ex)

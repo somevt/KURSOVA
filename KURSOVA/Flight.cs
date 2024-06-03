@@ -11,8 +11,8 @@ namespace KURSOVA
         public string flightNumber;
         public List<string> Stops; // Список зупинок, включаючи пункт відправлення, проміжні пункти та пункт призначення
         public List<string> FlightDays;
-        public DateTime DepartureDate;
-        public DateTime ArrivalDate;
+        public DateTime departureDate;
+        public DateTime arrivalDate;
         public string carrier;
         public double ticketPrice;
         public int availableSeats;
@@ -41,7 +41,16 @@ namespace KURSOVA
             get { return carrier; }
             set { carrier = value; }
         }
-
+        public DateTime DepartureDate
+        {
+            get { return departureDate; }
+            set { departureDate = value; }
+        }
+        public DateTime ArrivalDate
+        {
+            get { return arrivalDate; }
+            set { arrivalDate = value; }
+        }
         public TimeSpan DepartureTime 
         { 
             get { return departureTime; } 

@@ -22,34 +22,82 @@ namespace KURSOVA
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            List<Flight> results = new List<Flight>();
-
+           
+            Schedule sh = new Schedule();
+            sh.Flights = this.schedule.Flights;
+            
             // Приклад пошуку за номером рейсу
-            if (!string.IsNullOrEmpty(txtFlightNumber.Text))
+            
+             if (!string.IsNullOrEmpty(txtDepartureCity.Text))
             {
-                string flightNumber = txtFlightNumber.Text;
-                var flight = schedule.FindFlightByNumber(flightNumber);
-                if (flight != null)
-                {
-                    results.Add(flight);
-                }
+                string departure = txtDepartureCity.Text;
+                 sh.Flights = sh.FindFlightsByDeparture(departure);
+                
+               
             }
-
-            else
+             if (!string.IsNullOrEmpty(txtArrivalCity.Text))
             {
-                foreach (var item in schedule.Flights)
-                {
-                    results.Add(item);
-                }
+                string arrival = txtArrivalCity.Text;
+                sh.Flights = sh.FindFlightsByArrival(arrival);
+
             }
-            // Інші критерії пошуку можна додати аналогічним чином
-
-            // Виведення результатів пошуку
-            dgwInfo.DataSource = results;
-            /*foreach (var flight in results)
+             if (!string.IsNullOrEmpty(txtPriceMax.Text)&& !string.IsNullOrEmpty(txtPriceMax.Text))
             {
-                lstResults.Items.Add(flight.ToString());
-            }*/
+
+               
+                double min = double.Parse(txtPriceMin.Text);
+                double max = double.Parse(txtPriceMax.Text);
+                if (max>min)
+                {
+
+                    sh.Flights = sh.FindFlightsByPriceRange(min,max);
+                }
+               
+
+            }
+           //sgvdiyhuaqeoueahgouagoahegouaeoguiahuioghuioahgouahguoiaeghuoh
+            DateTime? departureDate = null;
+            if (!string.IsNullOrWhiteSpace(txtDepartureDate.Text))
+            {
+                if (DateTime.TryParse(txtDepartureDate.Text, out DateTime parsedDate))
+                {
+                    departureDate = parsedDate;
+                }
+
+            }
+            DateTime? arrivalDate = null;
+            if (!string.IsNullOrWhiteSpace(txtArrivalDate.Text))
+            {
+                if (DateTime.TryParse(txtArrivalDate.Text, out DateTime parsedDate))
+                {
+                    arrivalDate = parsedDate;
+                }
+
+            }
+            if (departureDate!=null)
+            {
+                sh.Flights = sh.FindFlightsByDepartureDate((DateTime)departureDate);
+            }
+            if (arrivalDate!=null)
+            {
+                
+                sh.Flights = sh.FindFlightsByArrivalDate((DateTime)arrivalDate);
+            }
+            /* if (!string.IsNullOrEmpty(txtFlightNumber.Text))
+             {
+                 string flightNumber = txtFlightNumber.Text;
+                 var flight = schedule.FindFlightByNumber(flightNumber);
+                 if (flight != null)
+                 {
+                     sh.Flights.Clear();
+                      sh.Flights.Add(flight);
+                 }
+             }*/
+
+            dgwInfo.DataSource = sh.Flights;
+           
+          
+            
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -93,10 +141,34 @@ namespace KURSOVA
             }
         }
 
-        private void txtFlightNumber_TextChanged(object sender, EventArgs e)
+        private void btnFlightNum_Click(object sender, EventArgs e)
         {
+            List<Flight> results = new List<Flight>();
 
+            // Приклад пошуку за номером рейсу
+            if (!string.IsNullOrEmpty(txtFlightNumber.Text))
+            {
+                string flightNumber = txtFlightNumber.Text;
+                var flight = schedule.FindFlightByNumber(flightNumber);
+                if (flight != null)
+                {
+                    results.Add(flight);
+                }
+            }
+
+            else
+            {
+                foreach (var item in schedule.Flights)
+                {
+                    results.Add(item);
+                }
+            }
+            
+            dgwInfo.DataSource = results;
+            
         }
+
+
     }
 
 }

@@ -42,6 +42,14 @@ namespace KURSOVA
         {
             return Flights.Where(f => f.Stops.Contains(stop, StringComparer.OrdinalIgnoreCase)).ToList();
         }
+        public List<Flight> FindFlightsByDeparture(string stop)
+        {
+            return Flights.Where(f => f.DeparturePoint==stop).ToList();
+        }
+        public List<Flight> FindFlightsByArrival(string stop)
+        {
+            return Flights.Where(f => f.DestinationPoint == stop).ToList();
+        }
         public List<Flight> FindFlightsByCarrier(string carrier)
         {
             return Flights.Where(f => f.Carrier.Equals(carrier, StringComparison.OrdinalIgnoreCase)).ToList();
@@ -52,11 +60,14 @@ namespace KURSOVA
             return Flights.Where(f => f.TicketPrice >= minPrice && f.TicketPrice <= maxPrice).ToList();
         }
 
-        public List<Flight> FindFlightsByDate(DateTime date)
+        public List<Flight> FindFlightsByDepartureDate(DateTime date)
         {
             return Flights.Where(f => f.DepartureDate.Date == date.Date).ToList();
         }
-
+        public List<Flight> FindFlightsByArrivalDate(DateTime date)
+        {
+            return Flights.Where(f => f.ArrivalDate.Date == date.Date).ToList();
+        }
         public List<Flight> GetFlightsByDateRange(DateTime startDate, DateTime endDate)
         {
             return Flights.Where(f => f.DepartureDate >= startDate && f.DepartureDate <= endDate).ToList();

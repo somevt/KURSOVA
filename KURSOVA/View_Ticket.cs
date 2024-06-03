@@ -19,26 +19,27 @@ namespace KURSOVA
             InitializeComponent();
             schedule = sh;
             bookingManager = book;
+
         }
-    
 
-       /* private void btnSearchByFlightNumber_Click(object sender, EventArgs e)
-        {
-            List<Ticket> list = new List<Ticket>();
 
-            var ticket = bookingManager.GetTicketById(txtTicketID.Text);
-            if (ticket != null)
-            {
-                DisplayTicket(ticket);
-            }
-            else
-            {
-                MessageBox.Show("Ticket not found.");
+        /* private void btnSearchByFlightNumber_Click(object sender, EventArgs e)
+         {
+             List<Ticket> list = new List<Ticket>();
 
-            }
-        }*/
+             var ticket = bookingManager.GetTicketById(txtTicketID.Text);
+             if (ticket != null)
+             {
+                 DisplayTicket(ticket);
+             }
+             else
+             {
+                 MessageBox.Show("Ticket not found.");
 
-      
+             }
+         }*/
+
+        
 
         private void btnSearchByID_Click(object sender, EventArgs e)
         {
@@ -97,17 +98,25 @@ namespace KURSOVA
 
         private void btnSearchByStops_Click(object sender, EventArgs e)
         {
-            string stop = txtStop.Text;
-            List<Flight> flights = schedule.GetFlightsByStop(stop);
+            
+            List<Ticket> tickets = bookingManager.GetTicketsByStop(txtStop.Text);
 
-            if (flights.Count > 0)
+
+            if (tickets.Count > 0)
             {
-                dgvTickets.DataSource = flights;
+               
+                dgvTickets.DataSource = tickets;
             }
             else
             {
                 MessageBox.Show("No flights found with the specified stop.");
             }
+        }
+
+        private void btnSearchByDate_Click(object sender, EventArgs e)
+        {
+            List<Ticket> tickets = bookingManager.GetTicketsByDate(  DateTime.Parse(txtStartDate.Text));
+            dgvTickets.DataSource = tickets;
         }
 
 
