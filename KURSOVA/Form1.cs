@@ -32,6 +32,30 @@ namespace KURSOVA
                 DateTime departureDate = DateTime.Parse(txtDepartureDate.Text);
                 DateTime arrivalDate = DateTime.Parse(txtArrivalDate.Text);
 
+                if (ticketPrice <= 0)
+                {
+                    MessageBox.Show("Ticket price must be greater than 0.");
+                    return;
+                }
+
+                if (availableSeats <= 0)
+                {
+                    MessageBox.Show("Available seats must be greater than 0.");
+                    return;
+                }
+
+                if (departureDate < DateTime.Now && arrivalDate < DateTime.Now)
+                {
+                    MessageBox.Show("Date and time input error");
+                    return;
+                }
+
+                if (departureDate == arrivalDate)
+                {
+                    MessageBox.Show("Date and time input error");
+                    return;
+                }
+
                 arrivalDate.AddHours(1);
 
                 var flight = new Flight(flightNumber, stops, carrier, ticketPrice, availableSeats, departureDate, arrivalDate);
