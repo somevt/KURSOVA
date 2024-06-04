@@ -56,6 +56,13 @@ namespace KURSOVA
                     return;
                 }
 
+                if (schedule.Flights.Any(f => f.FlightNumber == flightNumber))
+                {
+                    MessageBox.Show("A flight with this number already exists.");
+                    return;
+                }
+
+
                 arrivalDate.AddHours(1);
 
                 var flight = new Flight(flightNumber, stops, carrier, ticketPrice, availableSeats, departureDate, arrivalDate);
