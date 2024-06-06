@@ -10,7 +10,7 @@ namespace KURSOVA
     {
         public string flightNumber;
         public List<string> Stops; // Список зупинок, включаючи пункт відправлення, проміжні пункти та пункт призначення
-        public List<string> FlightDays;
+        
         public DateTime departureDate;
         public DateTime arrivalDate;
         public string carrier;
@@ -123,10 +123,8 @@ namespace KURSOVA
             }
         }
 
-        public bool IsFlightOnDay(string day)
-        {
-            return FlightDays.Contains(day, StringComparer.OrdinalIgnoreCase);
-        }
+        
+     
          
         public override string ToString()
         {
