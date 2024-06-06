@@ -119,8 +119,11 @@ namespace KURSOVA
             dgvTickets.DataSource = tickets;
         }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 3959582 (New filtering options have been added to the search for a ticket, and a search for the date and time has been added to the review of booked tickets.)
 
         /*private void DisplayTickets(List<Ticket> tickets)
         {
