@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace KURSOVA
 {
@@ -31,7 +33,7 @@ namespace KURSOVA
             return ticket;
         }
 
-       
+        
 
         public void PrintTicket(string ticketID)
         {
@@ -78,6 +80,44 @@ namespace KURSOVA
         {
             return Tickets.FirstOrDefault(t => t.Flight.FlightNumber == ticketFlightNum);
         }
+        public void SaveTicketsToFile(string filePath)
+        {
+            using (StreamWriter writer = new StreamWriter(filePath))
+            {
+                foreach (var ticket in Tickets)
+                {
+                    writer.WriteLine($"{ticket.TicketID},{ticket.PassengerName},{ticket.PassengerSurname},{ticket.Flight.FlightNumber}");
+                }
+            }
+        }
 
+        public void LoadTicketsFromFile(string filePath)
+        {
+            if (!File.Exists(filePath))
+                throw new FileNotFoundException("File not found", filePath);
+
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    var parts = line.Split(',');
+                    if (parts.Length == 4)
+                    {
+                        var ticketID = parts[0];
+                        var passengerName = parts[1];
+                        var passengerSurname = parts[2];
+                        var flightNumber = parts[3];
+
+                        var flight = Schedule.FindFlightByNumber(flightNumber);
+                        if (flight != null)
+                        {
+                            var ticket = new Ticket(ticketID, flight, passengerName, passengerSurname);
+                            Tickets.Add(ticket);
+                        }
+                    }
+                }
+            }
+        }
     }
 }

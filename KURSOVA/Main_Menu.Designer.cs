@@ -32,15 +32,17 @@
             this.btnSearchFlights = new System.Windows.Forms.Button();
             this.btnBookTicket = new System.Windows.Forms.Button();
             this.btnViewTickets = new System.Windows.Forms.Button();
+            this.btnFileManagement = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAddFlight
             // 
             this.btnAddFlight.Font = new System.Drawing.Font("Microsoft YaHei UI", 7.8F, System.Drawing.FontStyle.Bold);
             this.btnAddFlight.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnAddFlight.Location = new System.Drawing.Point(622, 390);
+            this.btnAddFlight.Location = new System.Drawing.Point(466, 317);
+            this.btnAddFlight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAddFlight.Name = "btnAddFlight";
-            this.btnAddFlight.Size = new System.Drawing.Size(148, 35);
+            this.btnAddFlight.Size = new System.Drawing.Size(111, 28);
             this.btnAddFlight.TabIndex = 0;
             this.btnAddFlight.Text = "Add flight";
             this.btnAddFlight.UseVisualStyleBackColor = true;
@@ -50,9 +52,10 @@
             // 
             this.btnSearchFlights.Font = new System.Drawing.Font("Microsoft YaHei UI", 7.8F, System.Drawing.FontStyle.Bold);
             this.btnSearchFlights.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnSearchFlights.Location = new System.Drawing.Point(215, 135);
+            this.btnSearchFlights.Location = new System.Drawing.Point(161, 110);
+            this.btnSearchFlights.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSearchFlights.Name = "btnSearchFlights";
-            this.btnSearchFlights.Size = new System.Drawing.Size(148, 37);
+            this.btnSearchFlights.Size = new System.Drawing.Size(111, 30);
             this.btnSearchFlights.TabIndex = 1;
             this.btnSearchFlights.Text = "Search flights";
             this.btnSearchFlights.UseVisualStyleBackColor = true;
@@ -62,9 +65,10 @@
             // 
             this.btnBookTicket.Font = new System.Drawing.Font("Microsoft YaHei UI", 7.8F, System.Drawing.FontStyle.Bold);
             this.btnBookTicket.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnBookTicket.Location = new System.Drawing.Point(393, 137);
+            this.btnBookTicket.Location = new System.Drawing.Point(295, 111);
+            this.btnBookTicket.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBookTicket.Name = "btnBookTicket";
-            this.btnBookTicket.Size = new System.Drawing.Size(148, 35);
+            this.btnBookTicket.Size = new System.Drawing.Size(111, 28);
             this.btnBookTicket.TabIndex = 2;
             this.btnBookTicket.Text = "Book ticket";
             this.btnBookTicket.UseVisualStyleBackColor = true;
@@ -74,25 +78,41 @@
             // 
             this.btnViewTickets.Font = new System.Drawing.Font("Microsoft YaHei UI", 7.8F, System.Drawing.FontStyle.Bold);
             this.btnViewTickets.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnViewTickets.Location = new System.Drawing.Point(307, 196);
+            this.btnViewTickets.Location = new System.Drawing.Point(295, 159);
+            this.btnViewTickets.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnViewTickets.Name = "btnViewTickets";
-            this.btnViewTickets.Size = new System.Drawing.Size(148, 37);
+            this.btnViewTickets.Size = new System.Drawing.Size(111, 30);
             this.btnViewTickets.TabIndex = 3;
             this.btnViewTickets.Text = "View tickets";
             this.btnViewTickets.UseVisualStyleBackColor = true;
             this.btnViewTickets.Click += new System.EventHandler(this.btnViewTickets_Click);
             // 
+            // btnFileManagement
+            // 
+            this.btnFileManagement.Font = new System.Drawing.Font("Microsoft YaHei UI", 7.8F, System.Drawing.FontStyle.Bold);
+            this.btnFileManagement.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnFileManagement.Location = new System.Drawing.Point(161, 159);
+            this.btnFileManagement.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFileManagement.Name = "btnFileManagement";
+            this.btnFileManagement.Size = new System.Drawing.Size(111, 30);
+            this.btnFileManagement.TabIndex = 4;
+            this.btnFileManagement.Text = "File management";
+            this.btnFileManagement.UseVisualStyleBackColor = true;
+            this.btnFileManagement.Click += new System.EventHandler(this.btnFileManagement_Click);
+            // 
             // Main_Menu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::KURSOVA.Properties.Resources.main;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.btnFileManagement);
             this.Controls.Add(this.btnViewTickets);
             this.Controls.Add(this.btnBookTicket);
             this.Controls.Add(this.btnSearchFlights);
             this.Controls.Add(this.btnAddFlight);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Main_Menu";
             this.ShowIcon = false;
             this.Text = "Main_Menu";
@@ -106,5 +126,6 @@
         private System.Windows.Forms.Button btnSearchFlights;
         private System.Windows.Forms.Button btnBookTicket;
         private System.Windows.Forms.Button btnViewTickets;
+        private System.Windows.Forms.Button btnFileManagement;
     }
 }
