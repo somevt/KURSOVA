@@ -54,10 +54,10 @@
             this.txtStop = new System.Windows.Forms.TextBox();
             this.btnSearchByStops = new System.Windows.Forms.Button();
             this.btnSearchByDate = new System.Windows.Forms.Button();
-<<<<<<< HEAD
+
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-=======
+
             this.txtStartDate = new System.Windows.Forms.MaskedTextBox();
             this.ticketIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -89,26 +89,26 @@
             // txtTicketID
             // 
             this.txtTicketID.BackColor = System.Drawing.Color.White;
-<<<<<<< HEAD
+
             this.txtTicketID.Location = new System.Drawing.Point(6, 35);
             this.txtTicketID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-=======
+
             this.txtTicketID.Location = new System.Drawing.Point(4, 17);
             this.txtTicketID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> 3959582 (New filtering options have been added to the search for a ticket, and a search for the date and time has been added to the review of booked tickets.)
+
             this.txtTicketID.Name = "txtTicketID";
             this.txtTicketID.Size = new System.Drawing.Size(142, 20);
             this.txtTicketID.TabIndex = 1;
             // 
             // btnSearchByNum
             // 
-<<<<<<< HEAD
+
             this.btnSearchByNum.Location = new System.Drawing.Point(52, 177);
             this.btnSearchByNum.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-=======
+
             this.btnSearchByNum.Location = new System.Drawing.Point(39, 144);
             this.btnSearchByNum.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> 3959582 (New filtering options have been added to the search for a ticket, and a search for the date and time has been added to the review of booked tickets.)
+
             this.btnSearchByNum.Name = "btnSearchByNum";
             this.btnSearchByNum.Size = new System.Drawing.Size(105, 24);
             this.btnSearchByNum.TabIndex = 2;
@@ -127,35 +127,26 @@
             this.passengerNameDataGridViewTextBoxColumn,
             this.bookingDateDataGridViewTextBoxColumn});
             this.dgvTickets.DataSource = this.ticketsBindingSource;
-<<<<<<< HEAD
+
             this.dgvTickets.Location = new System.Drawing.Point(12, 223);
             this.dgvTickets.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-=======
+
             this.dgvTickets.Location = new System.Drawing.Point(9, 181);
             this.dgvTickets.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> 3959582 (New filtering options have been added to the search for a ticket, and a search for the date and time has been added to the review of booked tickets.)
             this.dgvTickets.Name = "dgvTickets";
             this.dgvTickets.RowHeadersWidth = 51;
             this.dgvTickets.RowTemplate.Height = 24;
             this.dgvTickets.Size = new System.Drawing.Size(624, 175);
             this.dgvTickets.TabIndex = 4;
             // 
-<<<<<<< HEAD
-=======
+
+
             // ticketsBindingSource
             // 
             this.ticketsBindingSource.DataMember = "Tickets";
             this.ticketsBindingSource.DataSource = this.bookingManagerBindingSource;
             // 
             // checkedListBox1
-            // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(540, 10);
-            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(91, 64);
-            this.checkedListBox1.TabIndex = 5;
-            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
@@ -278,7 +269,7 @@
             this.txtStartDate.TabIndex = 2;
             this.txtStartDate.ValidatingType = typeof(System.DateTime);
             // 
->>>>>>> 3959582 (New filtering options have been added to the search for a ticket, and a search for the date and time has been added to the review of booked tickets.)
+
             // ticketIDDataGridViewTextBoxColumn
             // 
             this.ticketIDDataGridViewTextBoxColumn.DataPropertyName = "TicketID";
@@ -517,11 +508,11 @@
             this.Controls.Add(this.dgvTickets);
             this.Controls.Add(this.btnSearchByID);
             this.Controls.Add(this.btnSearchByNum);
-<<<<<<< HEAD
+
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-=======
+
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> 3959582 (New filtering options have been added to the search for a ticket, and a search for the date and time has been added to the review of booked tickets.)
+
             this.Name = "View_Ticket";
             this.ShowIcon = false;
             this.Text = "Your tickets";
@@ -562,14 +553,13 @@
         private System.Windows.Forms.Button btnSearchByStops;
         private System.Windows.Forms.Button btnSearchByDate;
         private System.Windows.Forms.MaskedTextBox txtStartDate;
-<<<<<<< HEAD
+
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-=======
->>>>>>> 3959582 (New filtering options have been added to the search for a ticket, and a search for the date and time has been added to the review of booked tickets.)
+
     }
 }
