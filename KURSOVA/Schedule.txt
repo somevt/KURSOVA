@@ -1,0 +1,6 @@
+101;New York,London;British Airways;850;96;10.06.2024 8:30:00;10.06.2024 20:30:00
+202;Los Angeles,Tokyo;Japan Airlines;1200;148;11.06.2024 10:00:00;12.06.2024 14:00:00
+303;Sydney,Singapore,Dubai;Emirates;1400;200;12.06.2024 12:00:00;13.06.2024 18:00:00
+404;Paris,Rome;Air France;400;80;14.06.2024 9:00:00;14.06.2024 11:30:00
+505;Toronto,New York,Miami;Air Canada;500;120;15.06.2024 13:00:00;15.06.2024 20:00:00
+765;London,Manchester,New York;British Airways;523;235;11.06.2024 12:34:00;12.06.2024 14:40:00

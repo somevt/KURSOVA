@@ -64,7 +64,7 @@
             this.passengerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookingDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookingManagerBindingSource = new System.Windows.Forms.BindingSource(this.components);
->>>>>>> 3959582 (New filtering options have been added to the search for a ticket, and a search for the date and time has been added to the review of booked tickets.)
+
             ((System.ComponentModel.ISupportInitialize)(this.dgvTickets)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookingManagerBindingSource)).BeginInit();
@@ -75,13 +75,13 @@
             // 
             // txtFlightNumber
             // 
-<<<<<<< HEAD
+
             this.txtFlightNumber.Location = new System.Drawing.Point(6, 87);
             this.txtFlightNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-=======
+
             this.txtFlightNumber.Location = new System.Drawing.Point(4, 40);
             this.txtFlightNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> 3959582 (New filtering options have been added to the search for a ticket, and a search for the date and time has been added to the review of booked tickets.)
+
             this.txtFlightNumber.Name = "txtFlightNumber";
             this.txtFlightNumber.Size = new System.Drawing.Size(142, 20);
             this.txtFlightNumber.TabIndex = 0;
