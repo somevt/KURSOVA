@@ -39,11 +39,11 @@
             // 
             this.btnAddFlight.Font = new System.Drawing.Font("Microsoft YaHei UI", 7.8F, System.Drawing.FontStyle.Bold);
             this.btnAddFlight.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnAddFlight.Location = new System.Drawing.Point(466, 317);
+            this.btnAddFlight.Location = new System.Drawing.Point(39, 367);
             this.btnAddFlight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAddFlight.Name = "btnAddFlight";
             this.btnAddFlight.Size = new System.Drawing.Size(111, 28);
-            this.btnAddFlight.TabIndex = 0;
+            this.btnAddFlight.TabIndex = 5;
             this.btnAddFlight.Text = "Add flight";
             this.btnAddFlight.UseVisualStyleBackColor = true;
             this.btnAddFlight.Click += new System.EventHandler(this.btnAddFlight_Click);
@@ -92,7 +92,7 @@
             this.btnFileManagement.Font = new System.Drawing.Font("Microsoft YaHei UI", 7.8F, System.Drawing.FontStyle.Bold);
             this.btnFileManagement.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnFileManagement.Location = new System.Drawing.Point(161, 159);
-            this.btnFileManagement.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFileManagement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnFileManagement.Name = "btnFileManagement";
             this.btnFileManagement.Size = new System.Drawing.Size(111, 30);
             this.btnFileManagement.TabIndex = 4;
@@ -106,7 +106,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::KURSOVA.Properties.Resources.main;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(650, 425);
             this.Controls.Add(this.btnFileManagement);
             this.Controls.Add(this.btnViewTickets);
             this.Controls.Add(this.btnBookTicket);
@@ -116,6 +116,7 @@
             this.Name = "Main_Menu";
             this.ShowIcon = false;
             this.Text = "Main_Menu";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_Menu_KeyDown);
             this.ResumeLayout(false);
 
         }

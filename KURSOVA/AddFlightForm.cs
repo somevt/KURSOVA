@@ -16,63 +16,116 @@ namespace KURSOVA
         public AddFlightForm(Schedule schedule)
         {
             InitializeComponent();
-            this.schedule = schedule; // Store Schedule object passed from Main_Menu
+            this.KeyPreview = true;
+            this.schedule = schedule; 
         }
 
         private void btnAddFlight_Click(object sender, EventArgs e)
         {
-            try
-            {
+            
                 string flightNumber = txtFlightNumber.Text;
                 List<string> stops = txtStops.Text.Split(',').ToList();
                 string carrier = txtCarrier.Text;
-                double ticketPrice = double.Parse(txtTicketPrice.Text);
-                int availableSeats = int.Parse(txtAvailableSeats.Text);
-                DateTime departureDate = DateTime.Parse(txtDepartureDate.Text);
-                DateTime arrivalDate = DateTime.Parse(txtArrivalDate.Text);
 
-                if (ticketPrice <= 0)
+              
+                if (!double.TryParse(txtTicketPrice.Text, out double ticketPrice) || ticketPrice <= 0)
                 {
-                    MessageBox.Show("Ticket price must be greater than 0.");
+                    MessageBox.Show("Ticket price must be a positive number greater than 0.");
                     return;
                 }
 
-                if (availableSeats <= 0)
+              
+                if (!int.TryParse(txtAvailableSeats.Text, out int availableSeats) || availableSeats <= 0)
                 {
-                    MessageBox.Show("Available seats must be greater than 0.");
+                    MessageBox.Show("Available seats must be a positive integer greater than 0.");
                     return;
                 }
 
-                if (departureDate < DateTime.Now && arrivalDate < DateTime.Now)
+                
+                if (!DateTime.TryParse(txtDepartureDate.Text, out DateTime departureDate))
                 {
-                    MessageBox.Show("Date and time input error");
+                    MessageBox.Show("Invalid departure date format.");
                     return;
                 }
 
+               
+                if (!DateTime.TryParse(txtArrivalDate.Text, out DateTime arrivalDate))
+                {
+                    MessageBox.Show("Invalid arrival date format.");
+                    return;
+                }
+
+                
+                if (departureDate < DateTime.Now || arrivalDate < DateTime.Now)
+                {
+                    MessageBox.Show("Date and time input error. Dates cannot be in the past.");
+                    return;
+                }
+
+          
                 if (departureDate == arrivalDate)
                 {
-                    MessageBox.Show("Date and time input error");
+                    MessageBox.Show("Date and time input error. Departure and arrival dates cannot be the same.");
                     return;
                 }
 
+               
                 if (schedule.Flights.Any(f => f.FlightNumber == flightNumber))
                 {
                     MessageBox.Show("A flight with this number already exists.");
                     return;
                 }
 
+               
+                arrivalDate = arrivalDate.AddHours(1);
 
-                arrivalDate.AddHours(1);
-
+           
                 var flight = new Flight(flightNumber, stops, carrier, ticketPrice, availableSeats, departureDate, arrivalDate);
                 schedule.AddFlight(flight);
 
                 MessageBox.Show("Flight added successfully.");
             }
-            catch (Exception ex)
+        private void AddFlightForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
             {
-                MessageBox.Show($"Error: {ex.Message}");
+                case Keys.F1:
+                    ShowHelp();
+                   
+                    break;
+                case Keys.Enter:
+                    
+                    if (ActiveControl is TextBox || ActiveControl is ComboBox || ActiveControl is DateTimePicker)
+                    {
+                        SelectNextControl(ActiveControl, true, true, true, true);
+                    }
+                    else
+                    {
+                        btnAddFlight_Click(sender, e);
+                    }
+                    break;
+                case Keys.Escape:
+                 
+                    this.Close();  
+                    break;
+                case Keys.Tab:
+                   
+                    this.SelectNextControl(this.ActiveControl, true, true, true, true);
+                    break;
+                case Keys.ShiftKey:
+
+                    if (e.Shift)
+                    {
+                        this.SelectNextControl(this.ActiveControl, false, true, true, true);
+                    }
+                    break;
             }
+        }
+
+        private void ShowHelp()
+        {
+            
+            MessageBox.Show("Flight form fo adding aa flight");
         }
     }
 }

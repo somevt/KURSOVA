@@ -158,7 +158,7 @@ namespace KURSOVA
             this.txtArrivalDate.Mask = "00/00/0000 90:00";
             this.txtArrivalDate.Name = "txtArrivalDate";
             this.txtArrivalDate.Size = new System.Drawing.Size(100, 20);
-            this.txtArrivalDate.TabIndex = 29;
+            this.txtArrivalDate.TabIndex = 7;
             this.txtArrivalDate.ValidatingType = typeof(System.DateTime);
             // 
             // txtAvailableSeats
@@ -167,7 +167,7 @@ namespace KURSOVA
             this.txtAvailableSeats.Margin = new System.Windows.Forms.Padding(2);
             this.txtAvailableSeats.Name = "txtAvailableSeats";
             this.txtAvailableSeats.Size = new System.Drawing.Size(101, 20);
-            this.txtAvailableSeats.TabIndex = 27;
+            this.txtAvailableSeats.TabIndex = 3;
             // 
             // txtTicketPrice
             // 
@@ -175,7 +175,7 @@ namespace KURSOVA
             this.txtTicketPrice.Margin = new System.Windows.Forms.Padding(2);
             this.txtTicketPrice.Name = "txtTicketPrice";
             this.txtTicketPrice.Size = new System.Drawing.Size(100, 20);
-            this.txtTicketPrice.TabIndex = 26;
+            this.txtTicketPrice.TabIndex = 5;
             // 
             // txtCarrier
             // 
@@ -183,7 +183,7 @@ namespace KURSOVA
             this.txtCarrier.Margin = new System.Windows.Forms.Padding(2);
             this.txtCarrier.Name = "txtCarrier";
             this.txtCarrier.Size = new System.Drawing.Size(100, 20);
-            this.txtCarrier.TabIndex = 25;
+            this.txtCarrier.TabIndex = 4;
             // 
             // txtDepartureDate
             // 
@@ -192,7 +192,7 @@ namespace KURSOVA
             this.txtDepartureDate.Mask = "00/00/0000 90:00";
             this.txtDepartureDate.Name = "txtDepartureDate";
             this.txtDepartureDate.Size = new System.Drawing.Size(100, 20);
-            this.txtDepartureDate.TabIndex = 24;
+            this.txtDepartureDate.TabIndex = 6;
             this.txtDepartureDate.ValidatingType = typeof(System.DateTime);
             // 
             // txtStops
@@ -201,7 +201,7 @@ namespace KURSOVA
             this.txtStops.Margin = new System.Windows.Forms.Padding(2);
             this.txtStops.Name = "txtStops";
             this.txtStops.Size = new System.Drawing.Size(100, 20);
-            this.txtStops.TabIndex = 23;
+            this.txtStops.TabIndex = 2;
             // 
             // txtFlightNumber
             // 
@@ -209,7 +209,7 @@ namespace KURSOVA
             this.txtFlightNumber.Margin = new System.Windows.Forms.Padding(2);
             this.txtFlightNumber.Name = "txtFlightNumber";
             this.txtFlightNumber.Size = new System.Drawing.Size(100, 20);
-            this.txtFlightNumber.TabIndex = 22;
+            this.txtFlightNumber.TabIndex = 1;
             // 
             // btnAddFlight
             // 
@@ -220,7 +220,7 @@ namespace KURSOVA
             this.btnAddFlight.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddFlight.Name = "btnAddFlight";
             this.btnAddFlight.Size = new System.Drawing.Size(117, 35);
-            this.btnAddFlight.TabIndex = 21;
+            this.btnAddFlight.TabIndex = 8;
             this.btnAddFlight.Text = "Add flight";
             this.btnAddFlight.UseVisualStyleBackColor = false;
             this.btnAddFlight.Click += new System.EventHandler(this.btnAddFlight_Click);
@@ -249,6 +249,7 @@ namespace KURSOVA
             this.Controls.Add(this.btnAddFlight);
             this.Name = "AddFlightForm";
             this.Text = "AddFlightForm";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddFlightForm_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

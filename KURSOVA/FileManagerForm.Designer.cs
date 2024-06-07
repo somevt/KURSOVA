@@ -35,9 +35,12 @@ namespace KURSOVA
             // 
             // btnSaveToFile
             // 
-            this.btnSaveToFile.Location = new System.Drawing.Point(12, 43);
+            this.btnSaveToFile.Font = new System.Drawing.Font("Microsoft YaHei UI", 7.8F, System.Drawing.FontStyle.Bold);
+            this.btnSaveToFile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnSaveToFile.Location = new System.Drawing.Point(37, 53);
+            this.btnSaveToFile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSaveToFile.Name = "btnSaveToFile";
-            this.btnSaveToFile.Size = new System.Drawing.Size(142, 23);
+            this.btnSaveToFile.Size = new System.Drawing.Size(189, 36);
             this.btnSaveToFile.TabIndex = 0;
             this.btnSaveToFile.Text = "Save To File";
             this.btnSaveToFile.UseVisualStyleBackColor = true;
@@ -45,9 +48,12 @@ namespace KURSOVA
             // 
             // btnLoadFromFile
             // 
-            this.btnLoadFromFile.Location = new System.Drawing.Point(12, 97);
+            this.btnLoadFromFile.Font = new System.Drawing.Font("Microsoft YaHei UI", 7.8F, System.Drawing.FontStyle.Bold);
+            this.btnLoadFromFile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnLoadFromFile.Location = new System.Drawing.Point(37, 106);
+            this.btnLoadFromFile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLoadFromFile.Name = "btnLoadFromFile";
-            this.btnLoadFromFile.Size = new System.Drawing.Size(142, 23);
+            this.btnLoadFromFile.Size = new System.Drawing.Size(189, 36);
             this.btnLoadFromFile.TabIndex = 1;
             this.btnLoadFromFile.Text = "Load From File";
             this.btnLoadFromFile.UseVisualStyleBackColor = true;
@@ -55,12 +61,15 @@ namespace KURSOVA
             // 
             // FileManagerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(187, 160);
+            this.BackgroundImage = global::KURSOVA.Properties.Resources.main;
+            this.ClientSize = new System.Drawing.Size(260, 197);
             this.Controls.Add(this.btnLoadFromFile);
             this.Controls.Add(this.btnSaveToFile);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FileManagerForm";
+            this.ShowIcon = false;
             this.Text = "FileManagerForm";
             this.ResumeLayout(false);
 

@@ -10,29 +10,35 @@ using System.Windows.Forms;
 
 namespace KURSOVA
 {
-    public partial class Main_Menu : Form
+    public partial class User_Menu : Form
     {
         public Schedule schedule;
         public BookingManager booking;
+        public BookingManager userBooking;
+        public User user;
+
 
         string fileTicket = "Tickets.txt";
         string fileFlight = "Schedule.txt";
 
-        public Main_Menu()
+        public User_Menu(User user)
         {
             InitializeComponent();
+            this.user = user;
             this.KeyPreview = true;
             schedule = new Schedule();
             schedule.LoadFromFile(fileFlight);
             booking = new BookingManager(schedule);
             booking.LoadTicketsFromFile(fileTicket);
+
+            if (booking.isPassenger(user.Name,user.Surname) )
+            {
+                userBooking.Tickets = booking.GetTicketsByPassenger(user.Name,user.Surname);
+            }
+
+
         }
 
-        private void btnAddFlight_Click(object sender, EventArgs e)
-        {
-            AddFlightForm addFlightForm = new AddFlightForm(schedule);
-            addFlightForm.ShowDialog();
-        }
 
         private void btnSearchFlights_Click(object sender, EventArgs e)
         {
@@ -43,27 +49,24 @@ namespace KURSOVA
         private void btnBookTicket_Click(object sender, EventArgs e)
         {
             DateTime d = DateTime.Now;
-            Book_Ticket book = new Book_Ticket(booking, "", "", d,false);
+            Book_Ticket book = new Book_Ticket(booking, "", "", d, false,user);
             book.ShowDialog();
         }
 
         private void btnViewTickets_Click(object sender, EventArgs e)
         {
-            View_Ticket ticket = new View_Ticket(schedule, booking);
+            View_Ticket ticket = new View_Ticket(schedule, userBooking);
             ticket.ShowDialog();
         }
 
-        private void btnFileManagement_Click(object sender, EventArgs e)
-        {
-            FileManagerForm fileManager = new FileManagerForm(schedule, booking);
-            fileManager.ShowDialog();
-        }
+      
         private void ShowHelp()
         {
 
             MessageBox.Show("Menu with main functionality");
         }
-        private void Main_Menu_KeyDown(object sender, KeyEventArgs e)
+
+        private void User_Menu_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
