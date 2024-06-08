@@ -12,21 +12,22 @@ namespace KURSOVA
 {
     public partial class Search_Flight : Form
     {
-        private Schedule schedule = new Schedule();
+        private BookingManager booking;
 
-        public Search_Flight(Schedule schedule)
+        public Search_Flight(BookingManager booking)
         {
             InitializeComponent();
-            this.schedule = schedule; // Store Schedule object passed from Main_Menu
+            this.booking = booking;
+            this.KeyPreview = true;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
            
             Schedule sh = new Schedule();
-            sh.Flights = this.schedule.Flights;
+            sh.Flights = this.booking.Schedule.Flights;
             
-            // Приклад пошуку за номером рейсу
+           
             
              if (!string.IsNullOrEmpty(txtDepartureCity.Text))
             {
@@ -55,7 +56,7 @@ namespace KURSOVA
                
 
             }
-           //sgvdiyhuaqeoueahgouagoahegouaeoguiahuioghuioahgouahguoiaeghuoh
+         
             DateTime? departureDate = null;
             if (!string.IsNullOrWhiteSpace(txtDepartureDate.Text))
             {
@@ -83,16 +84,7 @@ namespace KURSOVA
                 
                 sh.Flights = sh.FindFlightsByArrivalDate((DateTime)arrivalDate);
             }
-            /* if (!string.IsNullOrEmpty(txtFlightNumber.Text))
-             {
-                 string flightNumber = txtFlightNumber.Text;
-                 var flight = schedule.FindFlightByNumber(flightNumber);
-                 if (flight != null)
-                 {
-                     sh.Flights.Clear();
-                      sh.Flights.Add(flight);
-                 }
-             }*/
+           
 
             dgwInfo.DataSource = sh.Flights;
            
@@ -107,26 +99,24 @@ namespace KURSOVA
 
         private void dgwInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Check if the click is on a valid cell (not on header or out of bounds)
+         
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                // Get the clicked cell
+             
                 DataGridViewCell cell = dgwInfo.Rows[e.RowIndex].Cells[e.ColumnIndex];
 
-                // Ensure the cell value is not null
+         
                 if (cell.Value != null)
                 {
-                    // Get the cell value as a string
+                 
                     string flightNum = cell.Value.ToString();
-
-                    // Clear the list view
                     lstViewStops.Items.Clear();
 
-                    // Find the flight by its number
-                    var flight = schedule.FindFlightByNumber(flightNum);
+                    
+                    var flight = booking.Schedule.FindFlightByNumber(flightNum);
                     if (flight != null)
                     {
-                        // Add each stop to the list view
+                      
                         foreach (var item in flight.Stops)
                         {
                             lstViewStops.Items.Add(item);
@@ -145,11 +135,11 @@ namespace KURSOVA
         {
             List<Flight> results = new List<Flight>();
 
-            // Приклад пошуку за номером рейсу
+           
             if (!string.IsNullOrEmpty(txtFlightNumber.Text))
             {
                 string flightNumber = txtFlightNumber.Text;
-                var flight = schedule.FindFlightByNumber(flightNumber);
+                var flight = booking.Schedule.FindFlightByNumber(flightNumber);
                 if (flight != null)
                 {
                     results.Add(flight);
@@ -158,7 +148,7 @@ namespace KURSOVA
 
             else
             {
-                foreach (var item in schedule.Flights)
+                foreach (var item in booking.Schedule.Flights)
                 {
                     results.Add(item);
                 }
@@ -167,8 +157,46 @@ namespace KURSOVA
             dgwInfo.DataSource = results;
             
         }
+        private void Search_Flight_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F1:
 
+                    ShowHelp();
+                    break;
+                case Keys.Enter:
+                    if (ActiveControl is TextBox || ActiveControl is ComboBox || ActiveControl is DateTimePicker)
+                    {
+                        SelectNextControl(ActiveControl, true, true, true, true);
+                    }
+                  
+                    break;
+                case Keys.Escape:
 
+                    this.Close();
+                    break;
+                case Keys.Tab:
+                    if (e.Shift)
+                    {
+
+                        this.SelectNextControl(this.ActiveControl, false, true, true, true);
+                    }
+                    else
+                    {
+
+                        this.SelectNextControl(this.ActiveControl, true, true, true, true);
+                    }
+                    e.Handled = true;
+                    break;
+            }
+        }
+
+        private void ShowHelp()
+        {
+
+            MessageBox.Show("Book a flight");
+        }
     }
 
 }

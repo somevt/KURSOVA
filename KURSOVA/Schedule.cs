@@ -23,30 +23,7 @@ namespace KURSOVA
             Flights.Add(flight);
         }
 
-        /*public Schedule SearchOneWay(Schedule s ,string Departure, string Arrival, DateTime date)
-        {
-            Schedule schedule = new Schedule();
-            schedule.Flights = s.Flights;
-            schedule.Flights = schedule.FindFlightsByDeparture(Departure);
-            schedule.Flights = schedule.FindFlightsByArrival(Arrival);
-            schedule.Flights = schedule.FindFlightsByDepartureDate(date.Date);
-
-            if (schedule.Flights.Count == 0)
-            {
-                throw new ArgumentException($"There are no flights from{Departure} to {Arrival} on {date}");
-            }
-            Schedule schedule1 = new Schedule();
-            foreach (var flight in schedule.Flights)
-            {
-                if (flight.AvailableSeats != 0)
-                {
-                    schedule.Flights.Add(flight);
-                }
-            }
-
-            return schedule1;
-
-        }*/
+       
         public Schedule SearchOneWay(Schedule schedule, string departure, string arrival, DateTime date)
         {
             var filteredFlights = schedule.Flights

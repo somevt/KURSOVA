@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace KURSOVA
 {
@@ -14,58 +15,51 @@ namespace KURSOVA
     {
         private Schedule schedule;
         private BookingManager bookingManager;
-        public View_Ticket(Schedule sh, BookingManager book)
+        public View_Ticket(BookingManager book)
         {
             InitializeComponent();
-            schedule = sh;
+           
             bookingManager = book;
+            this.KeyPreview = true;
 
         }
 
 
-        /* private void btnSearchByFlightNumber_Click(object sender, EventArgs e)
-         {
-             List<Ticket> list = new List<Ticket>();
-
-             var ticket = bookingManager.GetTicketById(txtTicketID.Text);
-             if (ticket != null)
-             {
-                 DisplayTicket(ticket);
-             }
-             else
-             {
-                 MessageBox.Show("Ticket not found.");
-
-             }
-         }*/
-
-        
-
         private void btnSearchByID_Click(object sender, EventArgs e)
         {
+            if (bookingManager == null)
+            {
+                MessageBox.Show("You don`t have any tickets", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtTicketID.Text))
+            {
+                MessageBox.Show("Please enter a ticket ID.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             List<Ticket> tickets = new List<Ticket>();
             var ticket = bookingManager.GetTicketById(txtTicketID.Text);
+
             if (ticket != null)
             {
                 tickets.Add(ticket);
             }
             else
             {
-                MessageBox.Show("Ticket not found.");
-                foreach (var item in bookingManager.Tickets)
-                {
-                    tickets.Add(item);
-                }
-
+                MessageBox.Show("Ticket not found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                tickets.AddRange(bookingManager.Tickets); 
             }
 
-           
+            dgvTickets.DataSource = null; 
             dgvTickets.DataSource = tickets;
         }
 
+
         private void btnSearchByNum_Click(object sender, EventArgs e)
         {
-            
+
             List<Ticket> tickets = new List<Ticket>();
             var ticket = bookingManager.GetTicketByFlightNum(txtFlightNumber.Text);
             if (ticket != null)
@@ -98,13 +92,13 @@ namespace KURSOVA
 
         private void btnSearchByStops_Click(object sender, EventArgs e)
         {
-            
+
             List<Ticket> tickets = bookingManager.GetTicketsByStop(txtStop.Text);
 
 
             if (tickets.Count > 0)
             {
-               
+
                 dgvTickets.DataSource = tickets;
             }
             else
@@ -115,25 +109,53 @@ namespace KURSOVA
 
         private void btnSearchByDate_Click(object sender, EventArgs e)
         {
-            List<Ticket> tickets = bookingManager.GetTicketsByDate(  DateTime.Parse(txtStartDate.Text));
+            List<Ticket> tickets = bookingManager.GetTicketsByDate(DateTime.Parse(txtStartDate.Text));
             dgvTickets.DataSource = tickets;
         }
-
-
-        /*private void DisplayTickets(List<Ticket> tickets)
+        private void ShowHelp()
         {
-            lstTickets.Items.Clear();
-            foreach (var ticket in tickets)
-            {
-                lstTickets.Items.Add(ticket.ToString());
-            }
-        }*/
 
-        /*  private void DisplayTicket(Ticket ticket)
-          {
-              lstTickets.Items.Clear();
-              lstTickets.Items.Add(ticket.ToString());
-          }*/
+            MessageBox.Show("Search a ticket form");
+        }
+        private void View_Ticket_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F1:
+
+                    ShowHelp();
+                    break;
+                case Keys.Enter:
+                    if (ActiveControl is TextBox || ActiveControl is ComboBox || ActiveControl is DateTimePicker)
+                    {
+                        SelectNextControl(ActiveControl, true, true, true, true);
+                    }
+
+                    break;
+                case Keys.Escape:
+
+                    this.Close();
+                    break;
+                case Keys.Tab:
+                    if (e.Shift)
+                    {
+
+                        this.SelectNextControl(this.ActiveControl, false, true, true, true);
+                    }
+                    else
+                    {
+
+                        this.SelectNextControl(this.ActiveControl, true, true, true, true);
+                    }
+                    e.Handled = true;
+                    break;
+            }
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            dgvTickets.DataSource = bookingManager.Tickets;
+        }
     }
 }
 

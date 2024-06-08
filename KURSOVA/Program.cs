@@ -19,9 +19,8 @@ namespace KURSOVA
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main_Menu());
-            DateTime dateTime = DateTime.Now;
-            Console.WriteLine(dateTime.ToString());
+            Application.Run(new LogInForm());
+          
         }
     }
 }

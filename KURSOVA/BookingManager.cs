@@ -15,7 +15,7 @@ namespace KURSOVA
 
         public BookingManager(Schedule schedule)
         {
-            Schedule = schedule ?? throw new ArgumentNullException(nameof(schedule), "Schedule cannot be null.");
+            Schedule = schedule ;
             Tickets = new List<Ticket>();
         }
 
@@ -60,6 +60,17 @@ namespace KURSOVA
             
             List<Ticket> tic = Tickets.Where(t => t.PassengerName == name).ToList();
             return tic.Where(t => t.PassengerSurname == surname).ToList();
+        }
+        public bool isPassenger(string name, string surname)
+        {
+            foreach (var item in Tickets)
+            {
+                if (item.PassengerName==name&&item.PassengerSurname==surname)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public List<Ticket> GetTicketsByStop(string stop)

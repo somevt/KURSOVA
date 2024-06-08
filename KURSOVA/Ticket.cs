@@ -7,9 +7,9 @@ namespace KURSOVA
         public string TicketID { get; private set; }
         public Flight Flight { get; private set; }
         public string PassengerName { get; private set; }
-        public string PassengerSurname{ get; private set; }
+        public string PassengerSurname { get; private set; }
         public DateTime BookingDate { get; private set; }
-        
+
         public Ticket(string ticketID, Flight flight, string passengerName, string passengerSurname)
         {
             if (flight == null)
@@ -23,7 +23,7 @@ namespace KURSOVA
             PassengerSurname = passengerSurname;
             BookingDate = DateTime.Now;
 
-            Flight.AvailableSeats--;
+            
         }
 
         public DateTime GetArrivalDate()
@@ -64,6 +64,6 @@ namespace KURSOVA
             Console.WriteLine($"Ticket ID {TicketID} has been cancelled.");
         }
 
-        
+
     }
 }

@@ -13,63 +13,103 @@ namespace KURSOVA
 {
     public partial class FileManagerForm : Form
     {
-        private Schedule schedule;
+        
         private BookingManager bookingManager;
-        public FileManagerForm(Schedule sh, BookingManager book)
+        public FileManagerForm(BookingManager book)
         {
             InitializeComponent();
-            schedule = sh;
+            this.KeyPreview = true;
             bookingManager = book;
 
         }
 
-
         private void btnSaveToFile_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string fileTicket = "Tickets.txt";
-                string fileFlight = "Schedule.txt";
+            string fileTicket = "Tickets.txt";
+            string fileFlight = "Schedule.txt";
 
-                if (bookingManager.Tickets.Count == 0||schedule.Flights.Count==0)
-                {
-                    MessageBox.Show("No tickets or flights to save.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                bookingManager.SaveTicketsToFile(fileTicket);
-                schedule.SaveToFile(fileFlight);
-                MessageBox.Show("Tickets and Flights saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
+            if (bookingManager.Tickets.Count == 0 || bookingManager.Schedule.Flights.Count == 0)
             {
-                MessageBox.Show($"An error occurred while saving tickets and flights: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No tickets or flights to save.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
+
+            if (!Directory.Exists(Path.GetDirectoryName(fileTicket)))
+            {
+                MessageBox.Show("The directory for saving tickets does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!Directory.Exists(Path.GetDirectoryName(fileFlight)))
+            {
+                MessageBox.Show("The directory for saving flights does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            bookingManager.SaveTicketsToFile(fileTicket);
+            bookingManager.Schedule.SaveToFile(fileFlight);
+            MessageBox.Show("Tickets and Flights saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnLoadFromFile_Click(object sender, EventArgs e)
         {
-            try
+            string fileTicket = "Tickets.txt";
+            string fileFlight = "Schedule.txt";
+
+            if (!File.Exists(fileTicket))
             {
-                string fileTicket = "Tickets.txt";
-                string fileFlight = "Schedule.txt";
-
-                if (!File.Exists(fileTicket)||!File.Exists(fileFlight))
-                {
-                    MessageBox.Show("Tickets file does not exist.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                bookingManager.LoadTicketsFromFile(fileTicket);
-                schedule.LoadFromFile(fileFlight);
-                MessageBox.Show("Tickets and Flights loaded successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                MessageBox.Show("Tickets file does not exist.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
-            catch (Exception ex)
+
+            if (!File.Exists(fileFlight))
             {
-                MessageBox.Show($"An error occurred while loading tickets and flights: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Schedule file does not exist.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            bookingManager.LoadTicketsFromFile(fileTicket);
+            bookingManager.Schedule.LoadFromFile(fileFlight);
+            MessageBox.Show("Tickets and Flights loaded successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private void ShowHelp()
+        {
+
+            MessageBox.Show("Menu with functionality for saving to file and load from file");
+        }
+        private void FileManagerForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F1:
+
+                    ShowHelp();
+                    break;
+                case Keys.Enter:
+                    if (ActiveControl is TextBox || ActiveControl is ComboBox || ActiveControl is DateTimePicker)
+                    {
+                        SelectNextControl(ActiveControl, true, true, true, true);
+                    }
+                    
+                    break;
+                case Keys.Escape:
+
+                    this.Close();
+                    break;
+                case Keys.Tab:
+                    if (e.Shift)
+                    {
+
+                        this.SelectNextControl(this.ActiveControl, false, true, true, true);
+                    }
+                    else
+                    {
+
+                        this.SelectNextControl(this.ActiveControl, true, true, true, true);
+                    }
+                    e.Handled = true;
+                    break;
             }
         }
-
     }
 }
