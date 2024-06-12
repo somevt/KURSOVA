@@ -110,16 +110,18 @@ namespace KURSOVA
                     this.Close();  
                     break;
                 case Keys.Tab:
-                   
-                    this.SelectNextControl(this.ActiveControl, true, true, true, true);
-                    break;
-                case Keys.ShiftKey:
+  if (e.Shift)
+  {
 
-                    if (e.Shift)
-                    {
-                        this.SelectNextControl(this.ActiveControl, false, true, true, true);
-                    }
-                    break;
+      this.SelectNextControl(this.ActiveControl, false, true, true, true);
+  }
+  else
+  {
+
+      this.SelectNextControl(this.ActiveControl, true, true, true, true);
+  }
+  e.Handled = true;
+  break;
             }
         }
 
