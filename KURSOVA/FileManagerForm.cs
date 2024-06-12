@@ -34,18 +34,6 @@ namespace KURSOVA
                 return;
             }
 
-            if (!Directory.Exists(Path.GetDirectoryName(fileTicket)))
-            {
-                MessageBox.Show("The directory for saving tickets does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (!Directory.Exists(Path.GetDirectoryName(fileFlight)))
-            {
-                MessageBox.Show("The directory for saving flights does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             bookingManager.SaveTicketsToFile(fileTicket);
             bookingManager.Schedule.SaveToFile(fileFlight);
             MessageBox.Show("Tickets and Flights saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
